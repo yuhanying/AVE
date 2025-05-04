@@ -14,6 +14,7 @@ python recognition/scripts/run_net.py \
 --video_val_context_pickle /path/to/annotations/AVE/AVE_1_second_validation_feature_times.pkl \
 --video_test_context_pickle /path/to/annotations/AVE/AVE_1_second_test_feature_times.pkl \
 --visual_input_dim 1024 \
+--audio_data_path /path/to/feats_slowfast_npy \
 --audio_train_action_pickle /path/to/annotations/AVE/AVE_train.pkl \
 --audio_val_action_pickle /path/to/annotations/AVE/AVE_validation.pkl \
 --audio_test_action_pickle /path/to/annotations/AVE/AVE_test.pkl \
