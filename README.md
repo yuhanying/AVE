@@ -30,6 +30,8 @@ python recognition/scripts/run_net.py \
 --d_model 384 \
 --batch-size 8 \
 --lr 5e-5 \
+--data_modality 'audio_visual' \
+--model_modality 'audio_visual' \
 --lambda_drloc -1 \
 --mixup_alpha 0.5 \
 --lambda_audio 1 \
