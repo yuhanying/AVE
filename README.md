@@ -43,5 +43,5 @@ python utils/ave/make_npyfiles.py
 ```
 
 the feature extracted(.npy files) from omnivore (visual) and slowfast (audio) can be download here.  
-因為檔案有35G，我先放在NAS上(`/MB605/feats_npy_ave`）
+這邊有先提取好了，因為檔案有35G，我先放在NAS上(`/MB605/feats_npy_ave`）
 
