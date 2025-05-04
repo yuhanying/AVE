@@ -1,6 +1,40 @@
 # AVE
 
 ## how to run
+To train TIM with Omnivore + AuditorySlowFast features, run
+```[bash]
+python recognition/scripts/run_net.py \
+--train \
+--output_dir /path/to/output \
+--video_data_path /path/to/feats_ominvoreB_w_tok_npy \
+--video_train_action_pickle /path/to/annotations/AVE/AVE_train.pkl \
+--video_val_action_pickle /path/to/annotations/AVE/AVE_validation.pkl \
+--video_test_action_pickle /path/to/annotations/AVE/AVE_test.pkl \
+--video_train_context_pickle /path/to/annotations/AVE/AVE_1_second_train_feature_times.pkl \
+--video_val_context_pickle /path/to/annotations/AVE/AVE_1_second_validation_feature_times.pkl \
+--video_test_context_pickle /path/to/annotations/AVE/AVE_1_second_test_feature_times.pkl \
+--visual_input_dim 1024 \
+--audio_train_action_pickle /path/to/annotations/AVE/AVE_train.pkl \
+--audio_val_action_pickle /path/to/annotations/AVE/AVE_validation.pkl \
+--audio_test_action_pickle /path/to/annotations/AVE/AVE_test.pkl \
+--audio_train_context_pickle /path/to/annotations/AVE/AVE_1_second_train_feature_times.pkl \
+--audio_val_context_pickle /path/to/annotations/AVE/AVE_1_second_validation_feature_times.pkl \
+--audio_test_context_pickle /path/to/annotations/AVE/AVE_1_second_test_feature_times.pkl \
+--audio_input_dim 2304 \
+--video_info_pickle /path/to/annotations/AVE/AVE_video_info.pkl \
+--dataset ave \
+--feat_stride 2 \
+--num_feats 25 \
+--feat_dropout 0.1 \
+--d_model 384 \
+--batch-size 8 \
+--lr 5e-5 \
+--lambda_drloc -1 \
+--mixup_alpha 0.5 \
+--lambda_audio 1 \
+--early_stop_period 4 \
+--include_verb_noun False
+```
 
 ## best model
 [here](https://drive.google.com/drive/folders/1ze6FTZu1OS6SbSW0xy8UBus9NQ0bxPXs?usp=sharing)
