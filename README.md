@@ -1,5 +1,7 @@
 # AVE
 
+## how to run
+
 ## best model
 [here](https://drive.google.com/drive/folders/1ze6FTZu1OS6SbSW0xy8UBus9NQ0bxPXs?usp=sharing)
 
@@ -41,5 +43,5 @@ python utils/ave/make_npyfiles.py
 ```
 
 the feature extracted(.npy files) from omnivore (visual) and slowfast (audio) can be download here.  
-因為檔案有35G，我先放在NAS上
+因為檔案有35G，我先放在NAS上(`/MB605/feats_npy_ave`）
 
