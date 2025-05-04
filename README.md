@@ -9,3 +9,7 @@ The link contains a zip containing ground truth data for each dataset, consistin
 - The validation split ground truth
 - The video metadata of the dataset
 The feature time intervals for training and valdiation splits
+
+## features
+The features used for this project can be extracted by following the instructions in the feature_extractors folder.
+the feature extracted from omnivore (visual) and slowfast (audio) can be download here
