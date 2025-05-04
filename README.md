@@ -51,7 +51,7 @@ The link contains a zip containing ground truth data for each dataset, consistin
 The feature time intervals for training and valdiation splits
 
 ## Post processing AVE features
-The features used for this project can be extracted by following the instructions in the `feature_extractors` folder.  
+The features used for this project can be extracted by following the instructions in the `feats_extract` folder.  
 
 You need to post-process the features with numpy files. The directory structure should be something like below:
 
