@@ -16,4 +16,6 @@ The feature time intervals for training and valdiation splits
 ## features
 The features used for this project can be extracted by following the instructions in the `feature_extractors` folder.  
 
-the feature extracted from omnivore (visual) and slowfast (audio) can be download here.
+the feature extracted from omnivore (visual) and slowfast (audio) can be download here.  
+因為檔案有35G，我先放在NAS上
+
