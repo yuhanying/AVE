@@ -191,6 +191,10 @@ def train_epoch(
         # print(f'audio_input:{audio_input.shape}')
         times = times.cuda(non_blocking=True)
         target = {k: v.cuda(non_blocking=True) for k, v in target.items()}
+        
+        # Compute gradient and backprop
+        optimizer.zero_grad()
+        
 
         metadata, v_queries, a_queries = misc.process_metadata(metadata)
 
@@ -397,8 +401,6 @@ def train_epoch(
         # --- OGM-GE 梯度調節結束 ---
         
 
-        # Compute gradient and backprop
-        optimizer.zero_grad()
         if args.enable_amp:
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
