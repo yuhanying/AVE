@@ -332,8 +332,16 @@ class AV_Qformer(nn.Module):
         # print(f"image_embeds:{image_embeds.shape} | image_mask:{image_mask.shape}")
 
         # 2) 创建 prompt （跟你原本一样）
+        # prompts = [
+        #     f"frame timestamp is from {s:.3f} to {e:.3f}."
+        #     for b in range(B) for (s, e) in time_windows[b]
+        # ]
+        # prompts = [
+        #     f"[TIME] {s:.3f} TO {e:.3f} [/TIME]"
+        #     for b in range(B) for (s, e) in time_windows[b]
+        # ]
         prompts = [
-            f"frame timestamp is from {s:.3f} to {e:.3f}."
+            f"frame timestamp is from [TIME] {s:.3f} to {e:.3f} [/TIME]."
             for b in range(B) for (s, e) in time_windows[b]
         ]
         # print(prompts[1])
@@ -487,7 +495,7 @@ class AV_Qformer(nn.Module):
         clip_atts = torch.ones(clip_hidden_state.size()[:-1], dtype=torch.long).to(device)
         if use_text_query:
             query_prompts = [
-                f"what happened between {s:.1f} and {e:.1f} seconds?"
+                f"what happened between [TIME] {s:.1f} and {e:.1f} [/TIME] seconds?"
                 for b in range(B) for (s, e) in query_time_windows[b]
             ]
             query_toks = self.tokenizer(query_prompts,
@@ -545,9 +553,13 @@ class AV_Qformer(nn.Module):
 
         # 2) 创建 prompt （跟你原本一样）
         prompts = [
-            f"frame timestamp is from {s:.3f} to {e:.3f}."
+            f"frame timestamp is from [TIME] {s:.3f} to {e:.3f} [/TIME]."
             for b in range(B) for (s, e) in time_windows[b]
         ]
+        # prompts = [
+        #     f"[TIME] {s:.3f} TO {e:.3f} [/TIME]"
+        #     for b in range(B) for (s, e) in time_windows[b]
+        # ]
         toks = self.tokenizer(prompts, padding=True, truncation=True,
                               return_tensors="pt").to(device)
         input_ids, text_mask = toks.input_ids, toks.attention_mask  # (B*Nf, L)
@@ -671,8 +683,12 @@ class AV_Qformer(nn.Module):
         clip_hidden_state = einops.rearrange(feats_vis, 'b t q h -> b (t q) h', b=B)
         clip_atts = torch.ones(clip_hidden_state.size()[:-1], dtype=torch.long).to(device)
         if use_text_query:
+            # query_prompts = [
+            #     f"what happend between {s:.1f} and {e:.1f} seconds?"
+            #     for b in range(B) for (s, e) in query_time_windows[b]
+            # ]
             query_prompts = [
-                f"what happend between {s:.1f} and {e:.1f} seconds?"
+                f"what happened between [TIME] {s:.1f} and {e:.1f} [/TIME] seconds?"
                 for b in range(B) for (s, e) in query_time_windows[b]
             ]
             query_toks = self.tokenizer(query_prompts,
